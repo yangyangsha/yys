@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CurriculumMapper">
+	<resultMap id="CurriclulumResultMap" type="com.pojo.Curriculum">
+		<id column="CUID" property="cuid" />
+		<result column="CUNAME" property="cuname" />
+		<result column="CUDES" property="cudes" />
+		<association property="major" javaType="com.pojo.Major"
+			column="maid" select="com.dao.MajorMapper.selectByPrimaryKey">
+		</association>
+	</resultMap>
+	<select id="selectByPrimaryKey" parameterType="int" resultMap="CurriclulumResultMap">
+		select * from CURRICULUM where CUID = #{cuid}
+	</select>
+
+	<select id="selectAll" resultMap="CurriclulumResultMap">
+		select * from CURRICULUM
+	</select>
+</mapper>

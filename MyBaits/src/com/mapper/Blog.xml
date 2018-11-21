@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IBlog">
+	<select id="dynamicIfTest" parameterType="com.pojo.Blog"
+		resultType="com.pojo.Blog">
+		select * from blog where 1 = 1
+		<if test="title != null">
+			and title = #{title}
+		</if>
+		<if test="content != null">
+			and content = #{content}
+		</if>
+		<if test="owner != null">
+			and owner = #{owner}
+		</if>
+	</select>
+	<select id="dynamicChooseTest" parameterType="Blog" resultType="Blog">
+		select * from blog where 1 = 1
+		<choose>
+			<when test="title != null">
+				and title = #{title}
+			</when>
+			<when test="content != null">                
+				and content = #{content}
+			</when>
+			<otherwise>               
+				and owner = "owner1"
+			</otherwise>
+		</choose>
+	</select>
+	<select id="dynamicTrimTest" parameterType="Blog" resultType="Blog">
+		select * from blog
+		<trim prefix="where" prefixOverrides="and |or">
+			<if test="title != null">
+				title = #{title}
+			</if>
+			<if test="content != null">
+				and content = #{content}
+			</if>
+			<if test="owner != null">
+				or owner = #{owner}
+			</if>
+		</trim>
+	</select>
+	<select id="dynamicWhereTest" parameterType="Blog" resultType="Blog">
+		select * from blog
+		<where>
+			<if test="title != null">
+				title = #{title}
+			</if>
+			<if test="content != null">
+				and content = #{content}
+			</if>
+			<if test="owner != null">
+				and owner = #{owner}
+			</if>
+		</where>
+	</select>
+	<update id="dynamicSetTest" parameterType="Blog">
+		update blog
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			<if test="owner != null">
+				owner = #{owner}
+			</if>
+		</set>
+		where bid = #{bid}
+	</update>
+	<select id="dynamicForeachTest" resultType="Blog">
+		select * from blog where bid in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	<select id="dynamicForeach2Test" resultType="Blog">
+		select * from blog where bid in
+		<foreach collection="array" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+</mapper>

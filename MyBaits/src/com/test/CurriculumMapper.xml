@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.ICurriculum">
+<resultMap type="com.test.Curriculum" id="curriculum">
+	<id property="cuid" column="cuid"/>
+	<result property="cuname" column="cuname"/>
+	<result property="cudes" column="cudes"/>
+	<association property="major" javaType="com.test.Curriculum" column="maid" select="com.test.IMajor.selectMajorByid"></association>
+</resultMap>
+<select id="selectAll" resultMap="curriculum">
+	select * from curriculum
+</select>
+<select id="selectByMaid" resultMap="curriculum">
+	select * from curriculum where maid=#{maid}
+</select>
+</mapper>

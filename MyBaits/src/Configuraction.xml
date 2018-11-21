@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="STDOUT_LOGGING" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.pojo.Blog" alias="Blog" />
+	</typeAliases>
+	<!--数据库环境 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@USER-20180905HG:1521:orcl" />
+				<property name="username" value="FabMephisto" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/mapper/Article.xml" />
+		<mapper resource="com/mapper/User.xml" />
+		<mapper resource="com/mapper/Blog.xml" />
+
+		<mapper resource="com/test/MajorMapper.xml" />
+		<mapper resource="com/test/CurriculumMapper.xml" />
+<!-- 		<mapper class="com.mapper.IUserMapper" /> -->
+<!-- 		<mapper class="com.mapper.IBlogMapper" /> -->
+<!-- 		<mapper class="com.mapper.IArticleMapper" /> -->
+
+
+		<mapper class="com.dao.CurriculumMapper"/>
+		<mapper class="com.dao.MajorMapper"/>
+	</mappers>
+</configuration>

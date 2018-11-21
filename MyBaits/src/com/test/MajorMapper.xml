@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.IMajor">
+<resultMap type="com.test.Major" id="major">
+	<id property="maid" column="maid"/>
+	<result property="maname" column="maname"/>
+	<result property="mades" column="mades"/>
+	<result property="madate" column="mades"/>
+	<collection property="curriculums" column="maid" select="com.test.ICurriculum.selectByMaid" ofType="com.test.Curriculum"></collection>
+</resultMap>
+<select id="selectMajorByid" resultMap="major" parameterType="int">
+	select * from major where maid=#{maid}
+</select>
+</mapper>

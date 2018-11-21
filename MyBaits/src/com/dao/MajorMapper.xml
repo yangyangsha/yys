@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.MajorMapper">
+  <resultMap id="MajorBaseResultMap" type="com.pojo.Major">
+    <id column="MAID"  property="maid" />
+    <result column="MANAME"  property="maname" />
+    <result column="MADATE"  property="madate" />
+    <result column="MADES"  property="mades" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="int" resultMap="MajorBaseResultMap">
+    select * from MAJOR
+    where MAID = #{maid}
+  </select>
+  <select id="selectAll" resultMap="MajorBaseResultMap">
+    select * from MAJOR
+  </select>
+</mapper>
