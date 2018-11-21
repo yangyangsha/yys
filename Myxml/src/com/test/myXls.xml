@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbook>
+	<!-- 文件页数 -->
+	<worksheet name="Sheet1">
+		<!-- 表头开始至结束行 -->
+		<section startRow="0" endRow="0">
+		</section>
+		<!-- 开始循环读取文件数据，配置开始行，items映射的list var映射的bean varType 类路径 -->
+		<!-- items 属性代表了包含这些重复行的容器，var 属性用来指示遍历时的容器的某一项，varType 属性定义了 var 属性所代表的 
+			Java 类全名 -->
+		<loop startRow="1" endRow="1" items="grades" var="grade"
+			varType="com.test.Grade">
+			<!-- 循环开始行 -->
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">grade.stname</mapping>
+				<mapping row="1" col="1">grade.clname</mapping>
+				<mapping row="1" col="2">grade.cuname</mapping>
+				<mapping row="1" col="3">grade.mark</mapping>
+				<mapping row="1" col="4">grade.testDate</mapping>
+				<!-- 以上是配置每列对应的bean的属性 -->
+			</section>
+			<!-- 结束条件配置 -->
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">以什么条件结束写在这里 若是为空结束这不填</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>
