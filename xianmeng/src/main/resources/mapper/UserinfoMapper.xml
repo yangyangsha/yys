@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main.java.com.dao.UserinfoMapper">
-  <resultMap id="BaseResultMap" type="main.java.com.pojo.Userinfo">
+<mapper namespace="com.dao.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.Userinfo">
     <id column="USID" jdbcType="DECIMAL" property="usid" />
     <result column="USNAME" jdbcType="VARCHAR" property="usname" />
     <result column="USPWD" jdbcType="VARCHAR" property="uspwd" />
@@ -19,7 +19,7 @@
     delete from USERINFO
     where USID = #{usid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="main.java.com.pojo.Userinfo">
+  <insert id="insert" parameterType="com.pojo.Userinfo">
     insert into USERINFO (USID, USNAME, USPWD, 
       USSEX, USBRITHDAY, USEMAIL, 
       USPHONE, USMOBILE, USQQ, 
@@ -31,7 +31,7 @@
       #{usimg,jdbcType=VARCHAR}, #{usvisitdate,jdbcType=TIMESTAMP}, #{usstate,jdbcType=CHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Userinfo">
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Userinfo">
     update USERINFO
     set USNAME = #{usname,jdbcType=VARCHAR},
       USPWD = #{uspwd,jdbcType=VARCHAR},

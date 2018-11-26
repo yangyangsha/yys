@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main.java.com.dao.SendMapper">
-  <resultMap id="BaseResultMap" type="main.java.com.pojo.Send">
+<mapper namespace="com.dao.SendMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.Send">
     <id column="SEID" jdbcType="DECIMAL" property="seid" />
     <result column="USID" jdbcType="DECIMAL" property="usid" />
     <result column="SENAME" jdbcType="VARCHAR" property="sename" />
@@ -18,7 +18,7 @@
     delete from SEND
     where SEID = #{seid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="main.java.com.pojo.Send">
+  <insert id="insert" parameterType="com.pojo.Send">
     insert into SEND (SEID, USID, SENAME, 
       SEPHONE, SEPROVINCE, SECITY, 
       SEDISTRICT, SEADRESS, SEZIP, 
@@ -28,7 +28,7 @@
       #{sedistrict,jdbcType=VARCHAR}, #{seadress,jdbcType=VARCHAR}, #{sezip,jdbcType=VARCHAR}, 
       #{secreatetime,jdbcType=TIMESTAMP}, #{seupdtime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Send">
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Send">
     update SEND
     set USID = #{usid,jdbcType=DECIMAL},
       SENAME = #{sename,jdbcType=VARCHAR},

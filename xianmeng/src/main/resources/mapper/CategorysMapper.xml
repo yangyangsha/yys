@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main.java.com.dao.CategorysMapper">
-  <resultMap id="BaseResultMap" type="main.java.com.pojo.Categorys">
+<mapper namespace="com.dao.CategorysMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.Categorys">
     <id column="CAID" jdbcType="DECIMAL" property="caid" />
     <result column="CAPARENTID" jdbcType="DECIMAL" property="caparentid" />
     <result column="CANAME" jdbcType="VARCHAR" property="caname" />
@@ -13,7 +13,7 @@
     delete from CATEGORYS
     where CAID = #{caid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="main.java.com.pojo.Categorys">
+  <insert id="insert" parameterType="com.pojo.Categorys">
     insert into CATEGORYS (CAID, CAPARENTID, CANAME, 
       CASTATE, CACREATETIME, CUPDTIME
       )
@@ -21,7 +21,7 @@
       #{castate,jdbcType=CHAR}, #{cacreatetime,jdbcType=TIMESTAMP}, #{cupdtime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Categorys">
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Categorys">
     update CATEGORYS
     set CAPARENTID = #{caparentid,jdbcType=DECIMAL},
       CANAME = #{caname,jdbcType=VARCHAR},

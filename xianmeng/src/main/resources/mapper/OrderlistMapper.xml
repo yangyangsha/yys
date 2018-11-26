@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main.java.com.dao.OrderlistMapper">
-  <resultMap id="BaseResultMap" type="main.java.com.pojo.Orderlist">
+<mapper namespace="com.dao.OrderlistMapper">
+  <resultMap id="BaseResultMap" type="com.pojo.Orderlist">
     <id column="ORID" jdbcType="DECIMAL" property="orid" />
     <result column="ORNUM" jdbcType="VARCHAR" property="ornum" />
     <result column="USID" jdbcType="DECIMAL" property="usid" />
@@ -20,7 +20,7 @@
     delete from ORDERLIST
     where ORID = #{orid,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="main.java.com.pojo.Orderlist">
+  <insert id="insert" parameterType="com.pojo.Orderlist">
     insert into ORDERLIST (ORID, ORNUM, USID, 
       SEID, ORPAYMENT, ORPAYTYPE, 
       ORSENDPRICE, ORSTATE, ORPAYTIME, 
@@ -32,7 +32,7 @@
       #{orsendtime,jdbcType=TIMESTAMP}, #{orclosetime,jdbcType=TIMESTAMP}, #{orcreatetime,jdbcType=TIMESTAMP}, 
       #{orupdtime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Orderlist">
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Orderlist">
     update ORDERLIST
     set ORNUM = #{ornum,jdbcType=VARCHAR},
       USID = #{usid,jdbcType=DECIMAL},
