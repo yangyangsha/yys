@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.dao.ItemorderMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.pojo.Itemorder">
+    <id column="ITID" jdbcType="DECIMAL" property="itid" />
+    <result column="ORID" jdbcType="DECIMAL" property="orid" />
+    <result column="PRID" jdbcType="DECIMAL" property="prid" />
+    <result column="ITQUALITY" jdbcType="DECIMAL" property="itquality" />
+    <result column="ITTOTALPRICE" jdbcType="DECIMAL" property="ittotalprice" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ITEMORDER
+    where ITID = #{itid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.pojo.Itemorder">
+    insert into ITEMORDER (ITID, ORID, PRID, 
+      ITQUALITY, ITTOTALPRICE)
+    values (#{itid,jdbcType=DECIMAL}, #{orid,jdbcType=DECIMAL}, #{prid,jdbcType=DECIMAL}, 
+      #{itquality,jdbcType=DECIMAL}, #{ittotalprice,jdbcType=DECIMAL})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Itemorder">
+    update ITEMORDER
+    set ORID = #{orid,jdbcType=DECIMAL},
+      PRID = #{prid,jdbcType=DECIMAL},
+      ITQUALITY = #{itquality,jdbcType=DECIMAL},
+      ITTOTALPRICE = #{ittotalprice,jdbcType=DECIMAL}
+    where ITID = #{itid,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ITID, ORID, PRID, ITQUALITY, ITTOTALPRICE
+    from ITEMORDER
+    where ITID = #{itid,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ITID, ORID, PRID, ITQUALITY, ITTOTALPRICE
+    from ITEMORDER
+  </select>
+</mapper>

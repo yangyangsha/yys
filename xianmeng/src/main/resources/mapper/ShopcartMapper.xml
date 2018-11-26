@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.dao.ShopcartMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.pojo.Shopcart">
+    <id column="SHID" jdbcType="DECIMAL" property="shid" />
+    <result column="USID" jdbcType="DECIMAL" property="usid" />
+    <result column="PRID" jdbcType="DECIMAL" property="prid" />
+    <result column="SHQUANTITY" jdbcType="DECIMAL" property="shquantity" />
+    <result column="SHCHECKED" jdbcType="CHAR" property="shchecked" />
+    <result column="SHCREATETIME" jdbcType="TIMESTAMP" property="shcreatetime" />
+    <result column="SHUPDTIME" jdbcType="TIMESTAMP" property="shupdtime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SHOPCART
+    where SHID = #{shid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.pojo.Shopcart">
+    insert into SHOPCART (SHID, USID, PRID, 
+      SHQUANTITY, SHCHECKED, SHCREATETIME, 
+      SHUPDTIME)
+    values (#{shid,jdbcType=DECIMAL}, #{usid,jdbcType=DECIMAL}, #{prid,jdbcType=DECIMAL}, 
+      #{shquantity,jdbcType=DECIMAL}, #{shchecked,jdbcType=CHAR}, #{shcreatetime,jdbcType=TIMESTAMP}, 
+      #{shupdtime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Shopcart">
+    update SHOPCART
+    set USID = #{usid,jdbcType=DECIMAL},
+      PRID = #{prid,jdbcType=DECIMAL},
+      SHQUANTITY = #{shquantity,jdbcType=DECIMAL},
+      SHCHECKED = #{shchecked,jdbcType=CHAR},
+      SHCREATETIME = #{shcreatetime,jdbcType=TIMESTAMP},
+      SHUPDTIME = #{shupdtime,jdbcType=TIMESTAMP}
+    where SHID = #{shid,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select SHID, USID, PRID, SHQUANTITY, SHCHECKED, SHCREATETIME, SHUPDTIME
+    from SHOPCART
+    where SHID = #{shid,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select SHID, USID, PRID, SHQUANTITY, SHCHECKED, SHCREATETIME, SHUPDTIME
+    from SHOPCART
+  </select>
+</mapper>

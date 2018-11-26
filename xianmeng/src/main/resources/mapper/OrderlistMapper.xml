@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.dao.OrderlistMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.pojo.Orderlist">
+    <id column="ORID" jdbcType="DECIMAL" property="orid" />
+    <result column="ORNUM" jdbcType="VARCHAR" property="ornum" />
+    <result column="USID" jdbcType="DECIMAL" property="usid" />
+    <result column="SEID" jdbcType="DECIMAL" property="seid" />
+    <result column="ORPAYMENT" jdbcType="DECIMAL" property="orpayment" />
+    <result column="ORPAYTYPE" jdbcType="CHAR" property="orpaytype" />
+    <result column="ORSENDPRICE" jdbcType="DECIMAL" property="orsendprice" />
+    <result column="ORSTATE" jdbcType="CHAR" property="orstate" />
+    <result column="ORPAYTIME" jdbcType="TIMESTAMP" property="orpaytime" />
+    <result column="ORSENDTIME" jdbcType="TIMESTAMP" property="orsendtime" />
+    <result column="ORCLOSETIME" jdbcType="TIMESTAMP" property="orclosetime" />
+    <result column="ORCREATETIME" jdbcType="TIMESTAMP" property="orcreatetime" />
+    <result column="ORUPDTIME" jdbcType="TIMESTAMP" property="orupdtime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ORDERLIST
+    where ORID = #{orid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.pojo.Orderlist">
+    insert into ORDERLIST (ORID, ORNUM, USID, 
+      SEID, ORPAYMENT, ORPAYTYPE, 
+      ORSENDPRICE, ORSTATE, ORPAYTIME, 
+      ORSENDTIME, ORCLOSETIME, ORCREATETIME, 
+      ORUPDTIME)
+    values (#{orid,jdbcType=DECIMAL}, #{ornum,jdbcType=VARCHAR}, #{usid,jdbcType=DECIMAL}, 
+      #{seid,jdbcType=DECIMAL}, #{orpayment,jdbcType=DECIMAL}, #{orpaytype,jdbcType=CHAR}, 
+      #{orsendprice,jdbcType=DECIMAL}, #{orstate,jdbcType=CHAR}, #{orpaytime,jdbcType=TIMESTAMP}, 
+      #{orsendtime,jdbcType=TIMESTAMP}, #{orclosetime,jdbcType=TIMESTAMP}, #{orcreatetime,jdbcType=TIMESTAMP}, 
+      #{orupdtime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Orderlist">
+    update ORDERLIST
+    set ORNUM = #{ornum,jdbcType=VARCHAR},
+      USID = #{usid,jdbcType=DECIMAL},
+      SEID = #{seid,jdbcType=DECIMAL},
+      ORPAYMENT = #{orpayment,jdbcType=DECIMAL},
+      ORPAYTYPE = #{orpaytype,jdbcType=CHAR},
+      ORSENDPRICE = #{orsendprice,jdbcType=DECIMAL},
+      ORSTATE = #{orstate,jdbcType=CHAR},
+      ORPAYTIME = #{orpaytime,jdbcType=TIMESTAMP},
+      ORSENDTIME = #{orsendtime,jdbcType=TIMESTAMP},
+      ORCLOSETIME = #{orclosetime,jdbcType=TIMESTAMP},
+      ORCREATETIME = #{orcreatetime,jdbcType=TIMESTAMP},
+      ORUPDTIME = #{orupdtime,jdbcType=TIMESTAMP}
+    where ORID = #{orid,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ORID, ORNUM, USID, SEID, ORPAYMENT, ORPAYTYPE, ORSENDPRICE, ORSTATE, ORPAYTIME, 
+    ORSENDTIME, ORCLOSETIME, ORCREATETIME, ORUPDTIME
+    from ORDERLIST
+    where ORID = #{orid,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ORID, ORNUM, USID, SEID, ORPAYMENT, ORPAYTYPE, ORSENDPRICE, ORSTATE, ORPAYTIME, 
+    ORSENDTIME, ORCLOSETIME, ORCREATETIME, ORUPDTIME
+    from ORDERLIST
+  </select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.dao.CategorysMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.pojo.Categorys">
+    <id column="CAID" jdbcType="DECIMAL" property="caid" />
+    <result column="CAPARENTID" jdbcType="DECIMAL" property="caparentid" />
+    <result column="CANAME" jdbcType="VARCHAR" property="caname" />
+    <result column="CASTATE" jdbcType="CHAR" property="castate" />
+    <result column="CACREATETIME" jdbcType="TIMESTAMP" property="cacreatetime" />
+    <result column="CUPDTIME" jdbcType="TIMESTAMP" property="cupdtime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from CATEGORYS
+    where CAID = #{caid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.pojo.Categorys">
+    insert into CATEGORYS (CAID, CAPARENTID, CANAME, 
+      CASTATE, CACREATETIME, CUPDTIME
+      )
+    values (#{caid,jdbcType=DECIMAL}, #{caparentid,jdbcType=DECIMAL}, #{caname,jdbcType=VARCHAR}, 
+      #{castate,jdbcType=CHAR}, #{cacreatetime,jdbcType=TIMESTAMP}, #{cupdtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Categorys">
+    update CATEGORYS
+    set CAPARENTID = #{caparentid,jdbcType=DECIMAL},
+      CANAME = #{caname,jdbcType=VARCHAR},
+      CASTATE = #{castate,jdbcType=CHAR},
+      CACREATETIME = #{cacreatetime,jdbcType=TIMESTAMP},
+      CUPDTIME = #{cupdtime,jdbcType=TIMESTAMP}
+    where CAID = #{caid,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select CAID, CAPARENTID, CANAME, CASTATE, CACREATETIME, CUPDTIME
+    from CATEGORYS
+    where CAID = #{caid,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select CAID, CAPARENTID, CANAME, CASTATE, CACREATETIME, CUPDTIME
+    from CATEGORYS
+  </select>
+</mapper>

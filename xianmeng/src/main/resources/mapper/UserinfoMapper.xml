@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.dao.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.pojo.Userinfo">
+    <id column="USID" jdbcType="DECIMAL" property="usid" />
+    <result column="USNAME" jdbcType="VARCHAR" property="usname" />
+    <result column="USPWD" jdbcType="VARCHAR" property="uspwd" />
+    <result column="USSEX" jdbcType="VARCHAR" property="ussex" />
+    <result column="USBRITHDAY" jdbcType="TIMESTAMP" property="usbrithday" />
+    <result column="USEMAIL" jdbcType="VARCHAR" property="usemail" />
+    <result column="USPHONE" jdbcType="VARCHAR" property="usphone" />
+    <result column="USMOBILE" jdbcType="VARCHAR" property="usmobile" />
+    <result column="USQQ" jdbcType="VARCHAR" property="usqq" />
+    <result column="USIMG" jdbcType="VARCHAR" property="usimg" />
+    <result column="USVISITDATE" jdbcType="TIMESTAMP" property="usvisitdate" />
+    <result column="USSTATE" jdbcType="CHAR" property="usstate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from USERINFO
+    where USID = #{usid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.pojo.Userinfo">
+    insert into USERINFO (USID, USNAME, USPWD, 
+      USSEX, USBRITHDAY, USEMAIL, 
+      USPHONE, USMOBILE, USQQ, 
+      USIMG, USVISITDATE, USSTATE
+      )
+    values (#{usid,jdbcType=DECIMAL}, #{usname,jdbcType=VARCHAR}, #{uspwd,jdbcType=VARCHAR}, 
+      #{ussex,jdbcType=VARCHAR}, #{usbrithday,jdbcType=TIMESTAMP}, #{usemail,jdbcType=VARCHAR}, 
+      #{usphone,jdbcType=VARCHAR}, #{usmobile,jdbcType=VARCHAR}, #{usqq,jdbcType=VARCHAR}, 
+      #{usimg,jdbcType=VARCHAR}, #{usvisitdate,jdbcType=TIMESTAMP}, #{usstate,jdbcType=CHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.pojo.Userinfo">
+    update USERINFO
+    set USNAME = #{usname,jdbcType=VARCHAR},
+      USPWD = #{uspwd,jdbcType=VARCHAR},
+      USSEX = #{ussex,jdbcType=VARCHAR},
+      USBRITHDAY = #{usbrithday,jdbcType=TIMESTAMP},
+      USEMAIL = #{usemail,jdbcType=VARCHAR},
+      USPHONE = #{usphone,jdbcType=VARCHAR},
+      USMOBILE = #{usmobile,jdbcType=VARCHAR},
+      USQQ = #{usqq,jdbcType=VARCHAR},
+      USIMG = #{usimg,jdbcType=VARCHAR},
+      USVISITDATE = #{usvisitdate,jdbcType=TIMESTAMP},
+      USSTATE = #{usstate,jdbcType=CHAR}
+    where USID = #{usid,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select USID, USNAME, USPWD, USSEX, USBRITHDAY, USEMAIL, USPHONE, USMOBILE, USQQ, 
+    USIMG, USVISITDATE, USSTATE
+    from USERINFO
+    where USID = #{usid,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select USID, USNAME, USPWD, USSEX, USBRITHDAY, USEMAIL, USPHONE, USMOBILE, USQQ, 
+    USIMG, USVISITDATE, USSTATE
+    from USERINFO
+  </select>
+</mapper>
