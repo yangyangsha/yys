@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="default" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<!-- 该插件给实体类添加toString()方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<!-- 这个插件给由MBG生成的Java模型对象增加了equals和hashCode方法 -->
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<!-- 去掉注释 -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 数据库连接 -->
+		<jdbcConnection connectionURL="jdbc:oracle:thin:@localhost:1522:orcl666"
+			driverClass="oracle.jdbc.driver.OracleDriver" password="yys" userId="yys" />
+		<!-- 生成文件的设置,包和项目 -->
+		<!-- true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型 false：默认, scale>0;length>18：使用BigDecimal; 
+			scale=0;length[10,18]：使用Long； scale=0;length[5,9]：使用Integer； scale=0;length<5：使用Short； -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.pojo"
+			targetProject="EducationalManagementSystem" />
+		<sqlMapGenerator targetPackage="com.mapper"
+			targetProject="EducationalManagementSystem" />
+		<!-- XMLMAPPER使用xml类型,ANNOTATEDMAPPER使用注解类型 -->
+		<javaClientGenerator targetPackage="com.dao"
+			targetProject="EducationalManagementSystem" type="XMLMAPPER" />
+
+		<table tableName="dormitory" />
+		<table tableName="curriculum" />
+		<table tableName="classinfo" />
+		<table tableName="grade" />
+			<table tableName="curriculum_teacher" />
+		<table tableName="curriculum_student" />
+	</context>
+</generatorConfiguration>
