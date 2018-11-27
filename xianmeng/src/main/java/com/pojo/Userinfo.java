@@ -27,7 +27,15 @@ public class Userinfo {
 
     private String usstate;
 
-    public Long getUsid() {
+    @Override
+	public String toString() {
+		return "Userinfo [usid=" + usid + ", usname=" + usname + ", uspwd=" + uspwd + ", ussex=" + ussex
+				+ ", usbrithday=" + usbrithday + ", usemail=" + usemail + ", usphone=" + usphone + ", usmobile="
+				+ usmobile + ", usqq=" + usqq + ", usimg=" + usimg + ", usvisitdate=" + usvisitdate + ", usstate="
+				+ usstate + "]";
+	}
+
+	public Long getUsid() {
         return usid;
     }
 

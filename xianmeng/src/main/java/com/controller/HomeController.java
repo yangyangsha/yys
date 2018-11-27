@@ -1,7 +1,11 @@
 package com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.pojo.Userinfo;
 @Controller
 public class HomeController {
 	@RequestMapping("xianmeng")
@@ -20,8 +24,5 @@ public class HomeController {
 	public String top(){
 		return "Top";
 	}
-	@RequestMapping("userleft")
-	public String userleft(){
-		return "User_left";
-	}
+
 }

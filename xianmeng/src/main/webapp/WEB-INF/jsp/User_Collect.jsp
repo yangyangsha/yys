@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--用户收藏样式-->
 <div class="user_style clearfix">
   <div class="user_center">
-   <c:import url="http://localhost:8080/userleft"></c:import>
+   <c:import url="http://localhost:8080/user/left"></c:import>
   <!--右侧样式-->
      <div class="right_style">
     <div class="info_content">

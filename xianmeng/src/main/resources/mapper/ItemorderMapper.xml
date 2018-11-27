@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="main.java.com.dao.ItemorderMapper">
+<mapper namespace="com.dao.ItemorderMapper">
   <resultMap id="BaseResultMap" type="com.pojo.Itemorder">
     <id column="ITID" jdbcType="DECIMAL" property="itid" />
     <result column="ORID" jdbcType="DECIMAL" property="orid" />

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,11 +11,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="fonts/iconfont.css"  rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<link href="css/sumoselect.css" rel="stylesheet"  type="text/css"/>
+<link href="css/purebox-metro.css" rel="stylesheet" id="skin">
+<script src="js/jquery.min.1.8.2.js" type="text/javascript"></script> 
+<script src="js/jquery.sumoselect.js"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
@@ -22,17 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
-    <div class="left_style">
-    <div class="menu_style">
-     <div class="user_title">用户中心</div>
+    <div class="left_style" >
+    <div class="menu_style" style="width: 200px">
+     <div class="user_title" style="width: 200px"><a href="user/goto">用户中心</a></div>
      <div class="user_Head">
-     <div class="user_portrait">
-      <a href="#" title="修改头像" class="btn_link"></a> <img src="images/people.png">
+     <div class="user_portrait" style="width: 198px">
+      <a href="user/personalinfo" title="用户信息" class="btn_link"></a><img src="${user.usimg }"> 
       <div class="background_img"></div>
       </div>
       <div class="user_name">
-       <p><span class="name">化海天堂</span><a href="user/changePassword">[修改密码]</a></p>
-       <p>访问时间：2016-1-21 10:23</p>
+       <p style="width: 200px;height: 25px"><span class="name">${user.usname }</span><a href="user/changePassword">[修改密码]</a></p>
+       <p style="width: 200px;height: 25px">访问时间：<fmt:formatDate value="${user.usvisitdate }"/></p>
        </div>           
      </div>
      <div class="sideMen">

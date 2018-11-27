@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="user_center">
     
     <!--左侧菜单栏-->
-  <c:import url="http://localhost:8080/userleft"></c:import>
+  <c:import url="http://localhost:8080/user/left"></c:import>
   <!--右侧样式-->
    <div class="right_style">
      <div class="info_content">
@@ -90,33 +90,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </ul>           
          </div>
         </div>
-        <form>
+        <form action="" method="post">
         <div class="Add_Addresss">
              <div class="title_name"><i></i>添加地址</div>
              <table>
               <tbody><tr>
                <td class="label_name">收货区域</td>
                <td colspan="3" class="select">
-               <label> 国家/地区 </label><select class="kitjs-form-suggestselect "></select> 
                 <label> 省份 </label><select class="kitjs-form-suggestselect "></select>
                 <label> 市/县 </label><select class="kitjs-form-suggestselect "></select>
                 <label> 区/县 </label><select class="kitjs-form-suggestselect"></select>
                </td>
                </tr>
-               <tr><td class="label_name">详细地址</td><td><input name="" type="text" class="Add-text"><i>（必填）</i></td>
-              <td class="label_name">送货时间</td><td><input name="" type="text" class="Add-text"><i>（选填）</i></td></tr>
-              <tr>
-              <td class="label_name">收件人姓名</td><td><input name="" type="text" class="Add-text"><i>（必填）</i></td>
-              <td class="label_name">电子邮箱</td><td><input name="" type="text" class="Add-text"><i>（选填）</i></td>
+               <tr><td class="label_name">详细地址</td><td><input name="" type="text" class="Add-text"></td>
               </tr>
               <tr>
-              <td class="label_name">邮&nbsp;&nbsp;编</td><td><input name="" type="text" class="Add-text"><i>（必填）</i></td>
-              <td class="label_name">手&nbsp;&nbsp;机</td><td><input name="" type="text" class="Add-text"><i>（必填）</i></td>           
+              <td class="label_name">收件人姓名</td><td><input name="" type="text" class="Add-text"></td>
+              
               </tr>
               <tr>
-              <td class="label_name">固定电话</td><td><input name="" type="text" class="Add-text"><i>（选填）</i></td></tr>
-              <tr><td class="label_name"></td><td></td><td class="label_name"></td><td></td>
-              </tr>             
+              <td class="label_name">邮&nbsp;&nbsp;编</td><td><input name="" type="text" class="Add-text"></td>
+                       
+              </tr>
+              <tr>
+              <td class="label_name">联系电话</td><td><input name="" type="text" class="Add-text"></td></tr>             
              </tbody></table>
              <div class="address_Note"><span>注：</span>只能添加5个收货地址信息。请乎用假名填写地址，如造成损失由收货人自己承担。</div>
              <div class="btn"><input name="1" type="submit" value="添加地址" class="Add_btn"></div>
