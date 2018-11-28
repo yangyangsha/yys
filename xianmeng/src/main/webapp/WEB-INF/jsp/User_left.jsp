@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <dd>
         <ul>
           <li> <a href="user/orderform"> 我的订单</a></li>
-          <li> <a href="user/address">收货地址</a></li>
+          <li> <a href="address/goto">收货地址</a></li>
           <li> <a href="user.php?act=booking_list"> 缺货登记</a></li>
         </ul>
       </dd>

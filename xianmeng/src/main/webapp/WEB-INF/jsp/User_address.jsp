@@ -21,6 +21,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#province").change(function(){
+$.post("address/city", {
+				id : $("#province").val()
+			}, function(data) {
+				var citys = "<option>请选择城市</option>";
+				for (var i in data) {
+					citys += "<option value='" + data[i].adid + "'>" + data[i].adname + "</option>";
+				}
+				$("#city").html(citys);
+			});
+});
+
+$("#city").change(function(){
+$.post("address/district", {
+				id : $("#city").val()
+			}, function(data) {
+				var districts = "<option>请选择区/县</option>";
+				for (var i in data) {
+					districts += "<option value='" + data[i].adid + "'>" + data[i].adname + "</option>";
+				}
+				$("#district").html(districts);
+			});
+});
+});
+</script>
 <title>收货地址管理</title>
 </head>
   <script type="text/javascript">
@@ -61,59 +88,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>182938596861</li>
             <li>610000</li>
            </ul>
-           <ul class="Address_info">
-            <div class="address_title">
-            <a href="#" class="modify iconfont icon-fankui btn btn-primary" title="修改信息" data-toggle="modal" id="purebox2"></a>
-            地址信息 <a href="javascript:over('0')" class="delete "><i class="iconfont icon-close2"></i></a></div>
-            <li>张婷婷</li>
-            <li>四川成都武侯区簇景横街210号3栋1单元307号。</li>
-            <li>182938596861</li>
-            <li>610000</li> 
-           </ul>
-           <ul class="Address_info">
-            <div class="address_title">
-            <a href="#" class="modify iconfont icon-fankui btn btn-primary" title="修改信息 " data-toggle="modal" id="purebox3"></a>
-            地址信息 <a href="javascript:over('0')" class="delete "><i class="iconfont icon-close2"></i></a></div>
-            <li>张婷婷</li>
-            <li>四川成都武侯区簇景横街210号3栋1单元307号。</li>
-            <li>182938596861</li>
-            <li>610000</li>
-           </ul>
-           <ul class="Address_info">
-            <div class="address_title">
-            <a href="#" class="modify iconfont icon-fankui btn btn-primary" data-toggle="modal" id="purebox4" title="修改信息"></a>
-            地址信息 <a href="javascript:over('0')" class="delete "><i class="iconfont icon-close2"></i></a></div>
-            <li>张婷婷</li>
-            <li>四川成都武侯区簇景横街210号3栋1单元307号。</li>
-            <li>182938596861</li>
-            <li>610000</li>
-           </ul>           
+                  
          </div>
         </div>
-        <form action="" method="post">
+        <form action="address/save" method="post">
+        <input type="hidden" value="${user.usid }" name="usid">
         <div class="Add_Addresss">
              <div class="title_name"><i></i>添加地址</div>
              <table>
               <tbody><tr>
                <td class="label_name">收货区域</td>
                <td colspan="3" class="select">
-                <label> 省份 </label><select class="kitjs-form-suggestselect "></select>
-                <label> 市/县 </label><select class="kitjs-form-suggestselect "></select>
-                <label> 区/县 </label><select class="kitjs-form-suggestselect"></select>
+                <label> 省份 </label>
+                <select class="kitjs-form-suggestselect " id="province" name="seprovince">
+                <option>请选择省份</option>
+                <c:forEach items="${provinces }" var="province">
+                	<option value="${province.adid }">${province.adname }</option>
+                </c:forEach>
+                </select>
+                <label> 市/县 </label>
+                <select class="kitjs-form-suggestselect " id="city" name="secity">
+                	<option>请先选择省份</option>
+                </select>
+                <label> 区/县 </label>
+                <select class="kitjs-form-suggestselect" id="district" name="sedistrict">
+                	<option>请先选择城市</option>
+                </select>
                </td>
                </tr>
-               <tr><td class="label_name">详细地址</td><td><input name="" type="text" class="Add-text"></td>
+               <tr><td class="label_name">详细地址</td><td><input name="seadress" type="text" class="Add-text"></td>
               </tr>
               <tr>
-              <td class="label_name">收件人姓名</td><td><input name="" type="text" class="Add-text"></td>
+              <td class="label_name">收件人姓名</td><td><input name="sename" type="text" class="Add-text"></td>
               
               </tr>
               <tr>
-              <td class="label_name">邮&nbsp;&nbsp;编</td><td><input name="" type="text" class="Add-text"></td>
+              <td class="label_name">邮&nbsp;&nbsp;编</td><td><input name="sezip" type="text" class="Add-text"></td>
                        
               </tr>
               <tr>
-              <td class="label_name">联系电话</td><td><input name="" type="text" class="Add-text"></td></tr>             
+              <td class="label_name">联系电话</td><td><input name="sephone" type="text" class="Add-text"></td></tr>             
              </tbody></table>
              <div class="address_Note"><span>注：</span>只能添加5个收货地址信息。请乎用假名填写地址，如造成损失由收货人自己承担。</div>
              <div class="btn"><input name="1" type="submit" value="添加地址" class="Add_btn"></div>

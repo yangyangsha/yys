@@ -14,4 +14,6 @@ public interface SendMapper {
     List<Send> selectAll();
 
     int updateByPrimaryKey(Send record);
+    
+    List<Send> selectByUsid(Long usid);
 }

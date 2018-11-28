@@ -23,7 +23,7 @@
       SEPHONE, SEPROVINCE, SECITY, 
       SEDISTRICT, SEADRESS, SEZIP, 
       SECREATETIME, SEUPDTIME)
-    values (#{seid,jdbcType=DECIMAL}, #{usid,jdbcType=DECIMAL}, #{sename,jdbcType=VARCHAR}, 
+    values (seq_send.nextval, #{usid,jdbcType=DECIMAL}, #{sename,jdbcType=VARCHAR}, 
       #{sephone,jdbcType=VARCHAR}, #{seprovince,jdbcType=VARCHAR}, #{secity,jdbcType=VARCHAR}, 
       #{sedistrict,jdbcType=VARCHAR}, #{seadress,jdbcType=VARCHAR}, #{sezip,jdbcType=VARCHAR}, 
       #{secreatetime,jdbcType=TIMESTAMP}, #{seupdtime,jdbcType=TIMESTAMP})
@@ -52,5 +52,10 @@
     select SEID, USID, SENAME, SEPHONE, SEPROVINCE, SECITY, SEDISTRICT, SEADRESS, SEZIP, 
     SECREATETIME, SEUPDTIME
     from SEND
+  </select>
+    <select id="selectByUsid" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select SEID, USID, SENAME, SEPHONE, SEPROVINCE, SECITY, SEDISTRICT, SEADRESS, SEZIP, 
+    SECREATETIME, SEUPDTIME
+    from SEND where usid=#{usid}
   </select>
 </mapper>

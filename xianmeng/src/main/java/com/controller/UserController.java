@@ -63,11 +63,6 @@ public class UserController {
 		return "redirect:personalinfo";
 	}
 
-	@RequestMapping("address")
-	public String address() {
-		return "User_address";
-	}
-
 	@RequestMapping("orderform")
 	public String orderform() {
 		return "User_Orderform";
